@@ -15,7 +15,8 @@ class Client(models.Model):
                                  null=True)
     email = models.EmailField(max_length=50,
                               null=True)
-    data_package = models.CharField(choices=DataPackageOptions.choices,
+    data_package = models.CharField(max_length=5,
+                                    choices=DataPackageOptions.choices,
                                     default=DataPackageOptions._2GB)
     date_created = models.DateTimeField(auto_now_add=True)
 
