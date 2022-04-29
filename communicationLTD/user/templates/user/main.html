@@ -10,16 +10,10 @@
 <body>
     {% include 'user/navbar.html' %}
     <br>
-    <div>
-        <style>
-        p {
-          position: fixed;
-          top: 50%;
-          left: 50%;
-        }</style>
-    {% block content %}
+    <div id="content_container">
+        {% block content %}
 
-    {% endblock %}
+        {% endblock %}
     </div>
 
     {% include 'user/footer.html' %}

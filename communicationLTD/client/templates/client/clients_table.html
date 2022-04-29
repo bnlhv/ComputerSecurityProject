@@ -1,0 +1,28 @@
+<table class="table table-hover table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">E-mail</th>
+      <th scope="col">Data Package</th>
+      <th scope="col">Sectors</th>
+      <th scope="col">Date Created</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for client in clients %}
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td>{{client.full_name}}</td>
+        <td>{{client.email}}</td>
+        <td>{{client.data_package}}</td>
+        <td>
+          {% for i in client.sectors.all %}
+                {{ i.name }},
+          {% endfor %}
+        </td>
+        <td>{{client.date_created}}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>

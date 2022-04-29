@@ -1,4 +1,8 @@
 {% extends 'user/main.html' %}
 {% block content %}
-<p>Clients Page</p>
+<div class="page-header container">
+    <div class="center"><h1>Clients</h1></div>
+</div>
+{% include 'client/add_client_form.html' %}
+{% include 'client/clients_table.html' %}
 {% endblock %}
