@@ -76,13 +76,17 @@ WSGI_APPLICATION = 'communicationLTD.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': "communicationLTD",
-        'USER': "postgres",
-        'PASSWORD': "postgres",
-        'HOST': "localhost",
-        'PORT': "5432",
+        'ENGINE': 'django.db.backends.db.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': "communicationLTD",
+    #     'USER': "postgres",
+    #     'PASSWORD': "postgres",
+    #     'HOST': "localhost",
+    #     'PORT': "5432",
+    # }
 }
 
 
