@@ -7,6 +7,9 @@ class Sectors(models.Model):
                             default="default_sector",
                             null=True)
 
+    def __str__(self) -> CharField:
+        return self.name
+
 
 class Client(models.Model):
     PACKAGES = (

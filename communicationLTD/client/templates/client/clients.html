@@ -3,6 +3,10 @@
 <div class="page-header container">
     <div class="center"><h1>Clients</h1></div>
 </div>
-{% include 'client/add_client_form.html' %}
+<div class="create-client">
+    <a class="btn btn-primary btn-sm" href="{% url 'create_client' %}">
+        Create New Client
+    </a>
+</div>
 {% include 'client/clients_table.html' %}
 {% endblock %}
