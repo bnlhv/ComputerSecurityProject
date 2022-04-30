@@ -30,6 +30,10 @@ django-admin createsuperuser
 ```  
 This would tell you whats your usernamr, email and password
 6. Enter the site in your chrome url "http://127.0.0.1:8000"  
+
+
 7. Enter the admin path to see your models and the stuff in the DB now "http://127.0.0.1:8000/admin/"  
+
+
 8. Start playing with "clients" screen on "http://127.0.0.1:8000/clients/"
  
