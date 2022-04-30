@@ -11,8 +11,8 @@
 
             <form action="{% url 'delete_client' client.id %}" method="post">
                 {% csrf_token %}
-                <a href="{% url 'clients' %}">Cancel</a>
-                <input type="submit" name="Confirm">
+                <a class="btn btn-warning" href="{% url 'clients' %}">Cancel</a>
+                <input class="btn btn-danger" type="submit" name="Confirm">
             </form>
         </div>
     </div>
