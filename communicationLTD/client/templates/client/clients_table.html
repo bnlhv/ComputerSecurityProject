@@ -7,6 +7,8 @@
       <th scope="col">Data Package</th>
       <th scope="col">Sectors</th>
       <th scope="col">Date Created</th>
+      <th scope="col">Update</th>
+      <th scope="col">Delete</th>
     </tr>
   </thead>
   <tbody>
@@ -22,6 +24,8 @@
           {% endfor %}
         </td>
         <td>{{client.date_created}}</td>
+        <td><a class="btn btn-sm btn-info" href="{% url 'update_client' client.id %}">Update Client</a></td>
+        <td><a class="btn btn-sm btn-danger" href="{% url 'delete_client' client.id %}">Delete Client</a></td>
       </tr>
     {% endfor %}
   </tbody>

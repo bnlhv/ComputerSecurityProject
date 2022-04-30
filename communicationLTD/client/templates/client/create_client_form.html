@@ -3,9 +3,16 @@
 <div class="page-header container">
     <div class="center"><h1>Create New Client</h1></div>
 </div>
-<form action="" method="post">
-    {% csrf_token %}
-    {{form}}
-    <input type="submit" name="Submit">
-</form>
+<div class="row">
+    <div class="col-md-10">
+        <div class="card card-body">
+            <form action="" method="post">
+                {% csrf_token %}
+                {{form}}
+                <input type="submit" name="Submit">
+            </form>
+        </div>
+    </div>
+</div>
+
 {% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'user/main.html' %}
+{% block content %}
+<div class="page-header container">
+    <div class="center"><h1>Delete Client</h1></div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card card-body">
+            <p>Are you sure you want to delete this {{client}}?</p>
+
+            <form action="{% url 'delete_client' client.id %}" method="post">
+                {% csrf_token %}
+                <a href="{% url 'clients' %}">Cancel</a>
+                <input type="submit" name="Confirm">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
