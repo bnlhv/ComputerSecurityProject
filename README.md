@@ -1,5 +1,4 @@
 # Computer Security Project - Communication LTD  
----------------------------------------------------  
 ### Description:  
 This is a fictional company's site that handles customers data packages for several sectors.  
 This site also manages users and permissions.  
