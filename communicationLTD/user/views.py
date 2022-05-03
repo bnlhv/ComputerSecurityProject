@@ -1,5 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.contrib.auth.forms import UserCreationForm
+from .forms import CreateUserForm
 
 
 def login(request) -> HttpResponse:
@@ -9,6 +11,14 @@ def login(request) -> HttpResponse:
 
 def register(request) -> HttpResponse:
     """ :return: Register html """
+    form = CreateUserForm()
+
+    if request.method == 'POST':
+        form = CreateUserForm(requetst.POST)
+        if form.is_valid():
+            form.save()
+
+    context = {'form': form}
     return render(request, "user/register.html")
 
 

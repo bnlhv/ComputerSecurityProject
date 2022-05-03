@@ -10,10 +10,10 @@ class User(models.Model):
     _id = models.AutoField
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
-    birthday = models.DateField()
     gender = models.TextField(choices=GENDER_CHOICES)
     email = models.CharField(max_length=100)
-    phone = models.CharField(max_length=30)
+    password1 = models.CharField(max_length=30)
+    password2 = models.CharField(max_length=30)
     plan = models.TextField(choices=PLAN_CHOICES)
 
     def __str__(self) -> CharField:
