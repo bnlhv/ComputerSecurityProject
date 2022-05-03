@@ -4,6 +4,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.forms import inlineformset_factory
 from django.contrib import messages
+from django.shortcuts import redirect, render
+from django.contrib.auth.forms import UserCreationForm
 from .forms import CreateUserForm
 
 
@@ -34,6 +36,7 @@ def register(request) -> HttpResponse:
         form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
+            return redirect("/login/")
 
     context = {"form": form}
     return render(request, "user/register.html")
