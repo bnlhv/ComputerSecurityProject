@@ -6,6 +6,8 @@ from django.forms import inlineformset_factory
 from django.contrib import messages
 from django.shortcuts import redirect, render
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+
 from .forms import CreateUserForm
 
 
