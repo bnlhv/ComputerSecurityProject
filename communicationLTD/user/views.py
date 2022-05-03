@@ -9,7 +9,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import CreateUserForm
 
 
-def login(request) -> HttpResponse:
+def loginPage(request) -> HttpResponse:
     """:return: Login html"""
     if request.method == "POST":
         username = request.POST.get("username")
@@ -19,7 +19,7 @@ def login(request) -> HttpResponse:
 
         if user is not None:
             login(request, user)
-            return redirect("user/loginsss")
+            return redirect("login")
         else:
             messages.error(request, "Invalid credentials")
 
@@ -27,7 +27,7 @@ def login(request) -> HttpResponse:
     return render(request, "user/login.html")
 
 
-def register(request) -> HttpResponse:
+def registerPage(request) -> HttpResponse:
 
     """:return: Register html"""
     form = CreateUserForm()
@@ -36,12 +36,13 @@ def register(request) -> HttpResponse:
         form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("/login/")
+            messages.success(request, "User registered succesfully")
+            return redirect("login")
 
     context = {"form": form}
-    return render(request, "user/register.html")
+    return render(request, "user/register.html", context)
 
 
-def forgot_password(request) -> HttpResponse:
+def forgotPasswordPage(request) -> HttpResponse:
     """:return: Forgot Password html"""
     return render(request, "user/forgot_password.html")
