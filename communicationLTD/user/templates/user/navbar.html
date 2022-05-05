@@ -1,3 +1,11 @@
+<style>
+  .hello-msg{
+    font-size: 18px;
+    color: #fff;
+    margin-right: 20px;
+  }
+</style>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">CommunicationLTD</a>
   <button
@@ -26,4 +34,9 @@
       </li>
     </ul>
   </div>
+
+  {% if request.user %}
+  <span class="hello-msg">Hello, {{request.user}}</span>
+  <span><a class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
+  {% endif %}
 </nav>
