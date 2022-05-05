@@ -21,13 +21,38 @@ pip install -r requirements.txt
 python manage.py migrate
 ```  
 
-5. Create your admin user  
+5. Create your admin user. This would tell you what's your username, email and password.  
 ```bash
 django-admin createsuperuser
+``` 
+
+6. Installing package to run https self-signed certificate:  
+   Here is how to install mkcert, you can choose to install any SSL you'd like on your computer.  
+Follow [full tutorial](https://timonweb.com/django/https-django-development-server-ssl-certificate/) __*just step 1 !*__  
+Or use these commands in your terminal (for linux, if you use windows enter the link, if you use Mac just run the last command). 
+
+```bash
+sudo apt install libnss3-tools
 ```  
-This would tell you what's your username, email and password
-6. Install mkcert package to run https self-signed certificate.  
-Follow [this](https://timonweb.com/django/https-django-development-server-ssl-certificate/) tutorial __*just step 1 !*__  
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```  
+```bash
+echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/user/.profile
+```  
+```bash
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"$ euxbrew/bin/brew shellenv)"' >> /home/usecho 'eval "$(/home/linuxbrew/.linu
+```  
+```bash
+sudo apt-get install build-essential
+```  
+```bash
+brew install gcc
+```  
+```bash
+brew install mkcert
+```
+
 
 7. Start the https server  
 ```bash
