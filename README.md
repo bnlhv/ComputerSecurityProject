@@ -20,20 +20,25 @@ pip install -r requirements.txt
 ```bash
 python manage.py migrate
 ```  
-5. Start server  
-```bash
-python manage.py runserver
-```  
+
 5. Create your admin user  
 ```bash
 django-admin createsuperuser
 ```  
-This would tell you whats your usernamr, email and password
-6. Enter the site in your chrome url "http://127.0.0.1:8000"  
+This would tell you what's your username, email and password
+6. Install mkcert package to run https self-signed certificate.  
+Follow [this](https://timonweb.com/django/https-django-development-server-ssl-certificate/) tutorial __*just step 1 !*__  
+
+7. Start the https server  
+```bash
+python manage.py runserver_plus --cert-file cert.pem --key-file key.pem
+```  
+
+8. Enter the site in your chrome url "https://127.0.0.1:8000"  
 
 
-7. Enter the admin path to see your models and the stuff in the DB now "http://127.0.0.1:8000/admin/"  
+9. Enter the admin path to see your models and the stuff in the DB now "https://127.0.0.1:8000/admin/"  
 
 
-8. Start playing with "clients" screen on "http://127.0.0.1:8000/clients/"
+10. After registration, start playing with "clients" screen on "https://127.0.0.1:8000/clients/"
  

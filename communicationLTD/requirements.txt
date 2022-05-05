@@ -1,2 +1,4 @@
 django
 Faker
+django-extensions
+Werkzeug
