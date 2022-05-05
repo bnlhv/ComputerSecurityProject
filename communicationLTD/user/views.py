@@ -16,7 +16,7 @@ def login_page(request) -> HttpResponse:
 
         if user is not None:
             login(request, user)
-            return redirect("login")
+            return redirect("clients")
         else:
             messages.error(request, "Invalid credentials")
 
