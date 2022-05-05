@@ -47,8 +47,3 @@ def logout_page(request) -> HttpResponse:
     """:return: logout user"""
     logout(request)
     return redirect("login")
-
-
-def forgot_password_page(request) -> HttpResponse:
-    """:return: Forgot Password html"""
-    return render(request, "user/forgot_password.html")
