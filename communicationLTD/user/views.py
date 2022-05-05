@@ -1,17 +1,12 @@
-import imp
-from django.http import HttpResponse
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
-from django.forms import inlineformset_factory
 from django.contrib import messages
+from django.contrib.auth import authenticate, login
+from django.http import HttpResponse
 from django.shortcuts import redirect, render
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
 
 from .forms import CreateUserForm
 
 
-def loginPage(request) -> HttpResponse:
+def login_page(request) -> HttpResponse:
     """:return: Login html"""
     if request.method == "POST":
         username = request.POST.get("username")
@@ -25,15 +20,12 @@ def loginPage(request) -> HttpResponse:
         else:
             messages.error(request, "Invalid credentials")
 
-    context = {}
     return render(request, "user/login.html")
 
 
-def registerPage(request) -> HttpResponse:
-
+def register_page(request) -> HttpResponse:
     """:return: Register html"""
     form = CreateUserForm()
-
     if request.method == "POST":
         form = CreateUserForm(request.POST)
         if form.is_valid():
@@ -45,6 +37,6 @@ def registerPage(request) -> HttpResponse:
     return render(request, "user/register.html", context)
 
 
-def forgotPasswordPage(request) -> HttpResponse:
+def forgot_password_page(request) -> HttpResponse:
     """:return: Forgot Password html"""
     return render(request, "user/forgot_password.html")
