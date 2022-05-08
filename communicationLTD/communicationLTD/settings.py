@@ -13,8 +13,9 @@ import os.path
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+from .configuration import PasswordConfiguration
 
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -26,7 +27,6 @@ SECRET_KEY = 'django-insecure-f8x*)u8e&s%+kq6t@=3nb@)o9#tcoy)rn0+w#b(w(cbg5q!qsf
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -40,7 +40,16 @@ INSTALLED_APPS = [
     'user',
     'client',
     'django_extensions',
-    'sslserver'
+    'sslserver',
+    'django_password_validators',
+    'django_password_validators.password_history',
+    'axes',
+]
+
+AUTHENTICATION_BACKENDS = [
+    # Needs to be the first backend in the list
+    'axes.backends.AxesBackend',
+    'django.contrib.auth.backends.ModelBackend',
 ]
 
 MIDDLEWARE = [
@@ -51,6 +60,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # Needs to be the last middleware in the list
+    'axes.middleware.AxesMiddleware',
 ]
 
 ROOT_URLCONF = 'communicationLTD.urls'
@@ -73,7 +84,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'communicationLTD.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
@@ -92,7 +102,6 @@ DATABASES = {
     # }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
@@ -103,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
         'OPTIONS': {
-            'min_length':10,
+            'min_length': PasswordConfiguration.MIN_LENGTH.value,
         }
     },
     {
@@ -112,8 +121,30 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
+    {
+        'NAME': 'django_password_validators.password_history.password_validation.UniquePasswordsValidator',
+        'OPTIONS': {
+            'last_passwords': PasswordConfiguration.LAST_PASSWORDS.value,
+        }
+    },
+    {
+        'NAME': 'django_password_validators.password_character_requirements.password_validation.PasswordCharacterValidator',
+        'OPTIONS': {
+            'min_length_digit': PasswordConfiguration.MIN_NUMERIC.value,
+            'min_length_alpha': PasswordConfiguration.MIN_ALPHA.value,
+            'min_length_special': PasswordConfiguration.MIN_SPECIAL.value,
+            'special_characters': PasswordConfiguration.ALLOWED_SPECIAL_CHARACTERS.value,
+        }
+    },
+    {
+        'NAME': 'pwned_passwords_django.validators.PwnedPasswordsValidator',
+        'OPTIONS': {
+            'error_message': 'That password was pwned',
+        }
+    },
 ]
 
+AXES_FAILURE_LIMIT = PasswordConfiguration.LOGIN_FAILURE_LIMIT.value
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
@@ -125,7 +156,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
