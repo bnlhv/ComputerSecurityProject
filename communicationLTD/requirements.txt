@@ -2,3 +2,6 @@ django
 Faker
 django-extensions
 Werkzeug
+django-password-validators
+pwned-passwords-django
+django-axes
