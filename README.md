@@ -65,4 +65,10 @@ SSL-Session:
 10. Enter the admin path to see your models and the stuff in the DB now "https://127.0.0.1:8000/admin/"  
 
 
-11. After registration, start playing with "clients" screen on "https://127.0.0.1:8000/clients/"
+11. After registration, start playing with "clients" screen on "https://127.0.0.1:8000/clients/"  
+
+
+12. If you are trying Max login attempts, you'll need to release your user/ip, for this studing purposes use:  
+```bash  
+python manage.py axes_reset_ip ip 127.0.0.1
+```
