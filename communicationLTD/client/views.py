@@ -4,7 +4,8 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 from .forms import ClientForm
-from .models import Client, create_client_with_sqli_demonstration
+from .models import Client
+from .utils import create_client_with_sqli_demonstration
 
 
 @login_required(login_url="login")
