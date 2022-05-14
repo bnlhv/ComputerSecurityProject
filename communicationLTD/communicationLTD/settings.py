@@ -153,6 +153,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AXES_FAILURE_LIMIT = PasswordConfiguration.LOGIN_FAILURE_LIMIT.value
+AXES_LOCK_OUT_BY_COMBINATION_USER_AND_IP = True
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/

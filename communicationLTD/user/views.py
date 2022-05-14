@@ -12,6 +12,7 @@ from django.views.decorators.debug import sensitive_post_parameters
 
 from .forms import CreateUserForm
 
+
 class ChangePassword(PasswordChangeView):
     form_class = PasswordChangeForm
     success_url = reverse_lazy("clients")
@@ -23,6 +24,7 @@ class ChangePassword(PasswordChangeView):
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
 
+
 def login_page(request) -> HttpResponse:
     """:return: Login html"""
     if request.user.is_authenticated:
@@ -30,9 +32,7 @@ def login_page(request) -> HttpResponse:
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")
-
         user = authenticate(request, username=username, password=password)
-
         if user is not None:
             login(request, user)
             return redirect("clients")
