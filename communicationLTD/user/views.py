@@ -11,7 +11,6 @@ from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.debug import sensitive_post_parameters
 
 from .forms import CreateUserForm
-from .utils import create_user_with_sqli_demonstration
 
 
 class ChangePassword(PasswordChangeView):
@@ -33,9 +32,7 @@ def login_page(request) -> HttpResponse:
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")
-
         user = authenticate(request, username=username, password=password)
-
         if user is not None:
             login(request, user)
             return redirect("clients")
@@ -51,24 +48,11 @@ def register_page(request) -> HttpResponse:
         return redirect("clients")
     form = CreateUserForm()
     if request.method == "POST":
-        # With sql injection demontration
-        username = request.POST.get("username")
-        email = request.POST.get("email")
-        password = request.POST.get("password1")
-
-        create_user_with_sqli_demonstration(
-            username=username,
-            email=email,
-            password=password
-        )
-
-        # Without sql injection
-
-        # form = CreateUserForm(request.POST)
-        # if form.is_valid():
-        #     form.save()
-        #     messages.success(request, "User registered successfully")
-        #     return redirect("login")
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "User registered successfully")
+            return redirect("login")
 
     context = {"form": form}
     return render(request, "user/register.html", context)

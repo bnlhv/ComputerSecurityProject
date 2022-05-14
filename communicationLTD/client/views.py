@@ -1,5 +1,4 @@
 from django.contrib.auth.decorators import login_required
-from django.db import connection
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
@@ -22,17 +21,12 @@ def create_client(request) -> HttpResponse:
     if request.method == "POST":
 
         # With sql injection demontration
-
-        # full_name = request.POST.get("full_name")
-        # email = request.POST.get("email")
-        # data_package = request.POST.get("data_package")
-        # sectors = request.POST.get("sectors")
         #
         # create_client_with_sqli_demonstration(
-        #     full_name=full_name,
-        #     email=email,
-        #     data_package=data_package,
-        #     sectors=sectors
+        #     full_name=request.POST.get("full_name"),
+        #     email=request.POST.get("email"),
+        #     data_package=request.POST.get("data_package"),
+        #     sectors=request.POST.get("sectors")
         # )
 
         # Without sql injection
