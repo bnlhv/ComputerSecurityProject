@@ -5,3 +5,6 @@ Werkzeug
 django-password-validators
 pwned-passwords-django
 django-axes
+django-sslserver
+lxml
+pyOpenSSL
