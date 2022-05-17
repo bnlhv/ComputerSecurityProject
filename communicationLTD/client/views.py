@@ -21,12 +21,11 @@ def create_client(request) -> HttpResponse:
     if request.method == "POST":
 
         # With sql injection demontration
-        #
+        
         # create_client_with_sqli_demonstration(
         #     full_name=request.POST.get("full_name"),
         #     email=request.POST.get("email"),
         #     data_package=request.POST.get("data_package"),
-        #     sectors=request.POST.get("sectors")
         # )
 
         # Without sql injection
