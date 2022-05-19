@@ -1,5 +1,5 @@
 <style>
-  .hello-msg{
+  .hello-msg {
     font-size: 18px;
     color: #fff;
     margin-right: 20px;
@@ -21,25 +21,31 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
+      {% if not request.user.username %}
       <li class="nav-item active">
         <a class="nav-link" href="{% url 'login' %}"
           >Login <span class="sr-only">(current)</span></a
         >
       </li>
+      {% endif %} {% if not request.user.username %}
       <li class="nav-item">
         <a class="nav-link" href="{% url 'register' %}">Register </a>
       </li>
+      {% endif %} {% if request.user.username %}
       <li class="nav-item">
         <a class="nav-link" href="{% url 'clients' %}">Clients </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'change_password' %}">Change Password</a>
+        <a class="nav-link" href="{% url 'change_password' %}"
+          >Change Password</a
+        >
       </li>
+      {% endif %}
     </ul>
   </div>
 
-  {% if request.user %}
-  <span class="hello-msg">Hello, {{request.user}}</span>
+  {% if request.user.username %}
+  <span class="hello-msg">Hello, {{request.user.username}}</span>
   <span><a class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
   {% endif %}
 </nav>
