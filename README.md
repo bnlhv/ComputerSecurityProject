@@ -79,5 +79,5 @@ python manage.py axes_reset_ip ip 127.0.0.1
 13. In order to make the mail notification system work, you need to change the value of `EMAIL_HOST_PASSWORD` in the settings.py file found in: `communicationLTD/communicationLTD/settings.py`
 
 ```bash
-EMAIL_HOST_PASSWORD={The password is in the pdf}
+EMAIL_HOST_PASSWORD="The password is in the pdf"
 ```
